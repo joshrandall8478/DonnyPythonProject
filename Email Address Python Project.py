@@ -10,7 +10,7 @@ def menu():
 
 def lookUpEmail(email):
     name = str(input("Enter a name: "))
-    if n in email:
+    if name in email:
             print("Name: {}".format(name))
             print("Email: {}".format(email))
             print("")
@@ -26,17 +26,17 @@ def addEmail(email):
 
 def changeEmail():
     name = str(input("Enter name: "))
-    if n not in email:
+    if name not in email:
             print("name not found")
             return None
     email = str(input("Enter new email address"))
-    email.append(name: email)
+    email.append({name: email})
     print("")
     
 
 def deleteEmail(email):
     name = str(input("Enter name: ")
-    if n not in email:
+    if name not in email:
         print("name not found")
         print("")
         return None
@@ -66,7 +66,7 @@ def read(email):
     return email
 
 def main():
-    email = readfile("EmailAddresses.txt")
+    email = read("EmailAddresses.txt")
     run = true
     while run:
         menu()
