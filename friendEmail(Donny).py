@@ -1,4 +1,3 @@
-# the code reads and loads from a text file called EmailAddresses.txt
 def menued():
     print('Menu')
     print('----------------------------------------')
@@ -11,15 +10,18 @@ def menued():
 def lookup(y,dicti):
     if y in dicti:
         response = dicti[y]
+        print(response)
+        return ""
     else:
         response = 'The specified name was not found'
+        return response
 def adding(y,z,dicti):
-    t = 'that name already exists'
     if y in dicti:
-        return t
+        print("That name already exists")
+        return ""
     else:
         dicti[y] = z
-        return dicti
+        return ""
 def changing(y,z,dicti):
     t = 'not here'
     if y in dicti:
@@ -45,7 +47,8 @@ def save(lsst):
 
             for ii in range(len(prob)):
                 output.write(prob[0]+' '+prob[1]+'\n')
-    return output
+    return ""
+
 def load():
     dicti = {}
     lid = []
@@ -68,7 +71,8 @@ def load():
     return dicti
 def main():
     dicti = load()
-    for i in range(3000):
+    run = True
+    while run:
         menued()
         x = int(input('Enter your choice: ', ))
 
@@ -93,10 +97,10 @@ def main():
             lists = []
             y = input('Enter name: ', )
             delete = deleting(y,dicti)
-            #lst = list(delete.items())
 
         if x ==5:
             lsst = list(dicti.items())
             wrt = save(lsst)
+            print("Information Saved")
             break
 main()
