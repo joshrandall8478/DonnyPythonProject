@@ -6,15 +6,10 @@ def menu():
     print("3. Change an existing email address")
     print("4. Delete a name and email address")
     print("5. Quit") 
-    return 
 
 def lookUpEmail(name,em):
     name = str(input("Enter a name: "))
-<<<<<<< HEAD
     if name in em:
-=======
-    if name in email:
->>>>>>> c92f507d4f723b9304c6b2ba172da59bbe98716b
             print("Name: {}".format(name))
             print("Email: {}".format(email))
             print("")
@@ -34,20 +29,12 @@ def changeEmail(email):
             print("name not found")
             return None
     email = str(input("Enter new email address"))
-<<<<<<< HEAD
     em.append(name)
-=======
-    email.append({name: email})
->>>>>>> c92f507d4f723b9304c6b2ba172da59bbe98716b
     print("")
     
 
 def deleteEmail(email):
-<<<<<<< HEAD
     name = str(input("Enter name: "))
-=======
-    name = str(input("Enter name: ")
->>>>>>> c92f507d4f723b9304c6b2ba172da59bbe98716b
     if name not in email:
         print("name not found")
         print("")
@@ -64,7 +51,6 @@ def saveEmail(email):
         file.write(names[i] + " " + em[names[i]])
         if len(names)-i > 1:
             file.write("\n")
-    print("information saved")
     
 
 def read(email):
@@ -74,13 +60,8 @@ def read(email):
     return email
 
 def main():
-<<<<<<< HEAD
     email = open("EmailAddresses.txt")
     run = True
-=======
-    email = read("EmailAddresses.txt")
-    run = true
->>>>>>> c92f507d4f723b9304c6b2ba172da59bbe98716b
     while run:
         menu()
         opt = int(input("Enter the command you'd like to use: "))
@@ -94,5 +75,7 @@ def main():
                   deleteEmail(em)
         if opt == 5:
                   saveEmail(em)
+                  print("information saved")
                   run = False
 main()
+
