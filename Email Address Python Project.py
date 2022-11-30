@@ -10,7 +10,7 @@ def menu():
     return opt
 
 
-def lookupEmail(file):
+def lookup(file):
     name = str(input("Enter a name: "))
     if name in file:
         print("Name: {}".format(name))
@@ -20,7 +20,7 @@ def lookupEmail(file):
         print("Name has not been found")
 
 
-def addEmail(file):
+def add(file):
     name = str(input("Enter a name: "))
     email = str(input("Enter an email address: "))
     file.append(name)
@@ -28,7 +28,7 @@ def addEmail(file):
     print("")
 
 
-def changeEmail(file):
+def change(file):
     name = str(input("Enter name: "))
     if name not in email:
         print("name not found")
@@ -38,7 +38,7 @@ def changeEmail(file):
     print("")
 
 
-def deleteEmail(email):
+def delete(email):
     name = str(input("Enter name: "))
     if name not in email:
         print("name not found")
@@ -49,7 +49,7 @@ def deleteEmail(email):
     print("")
 
 
-def saveEmail(email):
+def save(email):
     file = open("EmailAddresses.txt", "r")
     names = list(email.keys())
     for i in range(len(names)):
@@ -71,16 +71,16 @@ def main():
     while run:
         menu()
         if menu() == 1:
-            lookupEmail(file)
+            lookup(file)
         if menu() == 2:
-            addEmail(file)
+            add(file)
         if menu() == 3:
-            changeEmail(file)
+            change(file)
         if menu() == 4:
-            deleteEmail(file)
+            delete(file)
         if menu() == 5:
-            saveEmail(file)
-            print("information saved")
+            save(file)
+            print("Information Saved")
             run = False
 
 
