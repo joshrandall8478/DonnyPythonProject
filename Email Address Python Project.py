@@ -12,12 +12,13 @@ def menu():
 
 def lookup(file):
     name = str(input("Enter a name: "))
-    if name in file:
-        print("Name: {}".format(name))
-        print("Email: {}".format(file))
-        print("")
-    else:
-        print("Name has not been found")
+    with file.read() as f:
+        if name in f:
+            print("Name: {}".format(name))
+            print("Email: {}".format(file))
+            print("")
+        else:
+            print("Name has not been found")
 
 
 def add(file):
@@ -71,7 +72,7 @@ def main():
     while run:
         menu()
         if menu() == 1:
-            lookup(file)
+            lookup(str(file.read()))
         if menu() == 2:
             add(file)
         if menu() == 3:
