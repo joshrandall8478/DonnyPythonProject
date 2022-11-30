@@ -1,3 +1,5 @@
+#For this program to work, please make a text file and name it EmailAddresses.txt
+
 def menu():
     print("Menu")
     print("-------------------------")
@@ -5,77 +7,114 @@ def menu():
     print("2. Add a new name and email address")
     print("3. Change an existing email address")
     print("4. Delete a name and email address")
-    print("5. Quit") 
+    print("5. Quit")
+    return ""
 
-def lookUpEmail(name,em):
-    name = str(input("Enter a name: "))
-    if name in em:
-            print("Name: {}".format(name))
-            print("Email: {}".format(email))
-            print("")
+def lookUpEmail(y,dicti):
+    if y in dicti:
+        response = dicti[y]
+        print(response)
+        return ""
     else:
-        print("Name has not been found")
+        print("The specified name was not found")
+        return ""
 
-def addEmail(email):
-    name = str(input("Enter a name: "))
-    email = str(input("Enter an email address: "))
-    em.append(name)
-    print("Name and email have been added")
-    print("")
+def addEmail(y,z,dicti):
+    if y in dicti:
+        print("That name already exists")
+        return ""
+    else:
+        dicti[y] = z
+        return ""
+    
+def changeEmail(y,z,dicti):
+    if y in dicti:
+        del dicti[y]
+        dicti[y] = z
+        print("Email changed")
 
-def changeEmail(email):
-    name = str(input("Enter name: "))
-    if name not in email:
-            print("name not found")
-            return None
-    email = str(input("Enter new email address"))
-    em.append(name)
-    print("")
+        return ""
+    else:
+        print("Name does not exist")
+        return ""
     
 
-def deleteEmail(email):
-    name = str(input("Enter name: "))
-    if name not in email:
-        print("name not found")
-        print("")
-        return None
-    del em[name]
-    print("information deleted")
-    print("")
+def deleteEmail(y,dicti):
+    if y in dicti:
+        print("Name and Email deleted")
+        del dicti[y]
+        return ""
+    else:
+        print("Name does not exist")
+        return ""
+
     
 
-def saveEmail(email):
-    file = open("EmailAddresses.txt","r")
-    names = list(em.keys())
-    for i in range(len(names)):
-        file.write(names[i] + " " + em[names[i]])
-        if len(names)-i > 1:
-            file.write("\n")
+def saveEmail(lsst):
+    with open('EmailAddresses.txt', 'w') as output:
+        for i in range(len(lsst)):
+            prob = list(lsst[i])
+
+            for ii in range(len(prob)):
+                output.write(prob[0]+' '+prob[1]+'\n')
+    return ""
     
 
-def read(email):
-    file = em.read()
-    for i in range(len(file)):
-        ent = file[i].split(" ")
-    return email
+def read():
+    dicti = {}
+    lid = []
+    count = 0
+    with open("EmailAddresses.txt", "r") as file:
+        texx = file.read()
+        for line in file:
+            line.split()
+            lid.append(line)
+    newlist = []
+    for i in lid:
+        no = i.replace('\n','')
+        newlist.append(no)
+    tlist = []
+
+    for i in range(0,len(newlist)):
+        tlist = newlist[i]
+        Tist = tlist.split()
+        dicti[Tist[0]] = Tist[1]
+    return dicti
 
 def main():
-    email = open("EmailAddresses.txt")
+    dicti = read()
     run = True
     while run:
         menu()
+        print("\n")
         opt = int(input("Enter the command you'd like to use: "))
         if opt == 1:
-                  lookUpEmail(em)
+            y = input('Enter name: ', )
+            search = lookUpEmail(y,dicti)
+            print(search)
+            
         if opt == 2:
-                  addEmail(em)
+            y = input('Enter name: ', )
+            z = input('Enter email address: ', )
+            add = addEmail(y,z,dicti)
+            
         if opt == 3:
-                  changeEmail(em)
+            y = input('Enter name: ', )
+            z = input('Enter email address: ', )
+            change = changeEmail(y, z,dicti)
+            print('information updated')
+            
         if opt == 4:
-                  deleteEmail(em)
+            lists = []
+            y = input('Enter name: ', )
+            delete = deleteEmail(y,dicti)
+            
         if opt == 5:
-                  saveEmail(em)
-                  print("information saved")
-                  run = False
+            lsst = list(dicti.items())
+            wrt = saveEmail(lsst)
+            print("Information Saved")
+            break
 main()
+
+
 
