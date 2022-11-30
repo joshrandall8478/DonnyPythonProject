@@ -22,10 +22,10 @@ def lookUpEmail(y,dicti):
 def addEmail(y,z,dicti):
     if y in dicti:
         print("That name already exists")
-        return ""
+        return
     else:
         dicti[y] = z
-        return ""
+        return
     
 def changeEmail(y,z,dicti):
     if y in dicti:
@@ -82,32 +82,32 @@ def read():
     return dicti
 
 def main():
-    dicti = read()
+    dicti = {}
     run = True
     while run:
         menu()
         print("\n")
         opt = int(input("Enter the command you'd like to use: "))
         if opt == 1:
-            y = input('Enter name: ', )
-            search = lookUpEmail(y,dicti)
+            y = input('Enter name: ')
+            search = lookUpEmail(y, dicti)
             print(search)
             
         if opt == 2:
-            y = input('Enter name: ', )
-            z = input('Enter email address: ', )
-            add = addEmail(y,z,dicti)
+            y = input('Enter name: ')
+            z = input('Enter email address: ')
+            add = addEmail(y, z, dicti)
             
         if opt == 3:
             y = input('Enter name: ', )
             z = input('Enter email address: ', )
-            change = changeEmail(y, z,dicti)
+            change = changeEmail(y, z, dicti)
             print('information updated')
             
         if opt == 4:
             lists = []
             y = input('Enter name: ', )
-            delete = deleteEmail(y,dicti)
+            delete = deleteEmail(y, dicti)
             
         if opt == 5:
             lsst = list(dicti.items())
